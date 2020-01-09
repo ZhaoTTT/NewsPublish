@@ -1,2 +1,0 @@
-# NewsPublish
-NewsPublishWeb
