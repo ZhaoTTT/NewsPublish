@@ -9,7 +9,7 @@ namespace NewsPublish.Service
     /// <summary>
     /// 数据库访问上下文
     /// </summary>
-    class Db : DbContext
+    public class Db : DbContext
     {
         public Db() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,9 +22,13 @@ namespace NewsPublish.Service
         {
             base.OnModelCreating(modelBuilder);
         }
-        protected virtual DbSet<Banner> Banner { get; set; }
-        protected virtual DbSet<NewsClassify> NewsClassify { get; set; }
-        protected virtual DbSet<News> News { get; set; }
-        protected virtual DbSet<NewsComment> NewsComment { get; set; }
+        public virtual DbSet<Banner> Banner { get; set; }
+        public virtual DbSet<NewsClassify> NewsClassify { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<NewsComment> NewsComment { get; set; }
+        //protected virtual DbSet<Banner> Banner { get; set; }
+        //protected virtual DbSet<NewsClassify> NewsClassify { get; set; }
+        //protected virtual DbSet<News> News { get; set; }
+        //protected virtual DbSet<NewsComment> NewsComment { get; set; }
     }
 }
