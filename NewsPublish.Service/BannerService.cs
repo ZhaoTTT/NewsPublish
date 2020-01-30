@@ -37,7 +37,7 @@ namespace NewsPublish.Service
         /// <returns></returns>
         public ResponseModel GetBannerList()
         {
-            var banners = _db.Banner.ToList().OrderByDescending(c => c.AddTime);
+            var banners = _db.Banner.Where(c=>c.IndDelete!="X").ToList().OrderByDescending(c=>c.AddTime);//_db.Banner.ToList().OrderByDescending(c => c.AddTime); 
             var response = new ResponseModel();
             response.code = 200;
             response.result = "Successfully get Banner List";
@@ -65,7 +65,9 @@ namespace NewsPublish.Service
             var banner = _db.Banner.Find(bannerId);
             if (banner == null)
                 return new ResponseModel { code = 0, result = "Banner does not exist." };
-            _db.Banner.Remove(banner);
+            //_db.Banner.Remove(banner);
+            banner.IndDelete = "X";
+            _db.Banner.Update(banner);
             int i = _db.SaveChanges();
             if (i > 0)
                 return new ResponseModel { code = 200, result = "Banner is deleted successfully" };

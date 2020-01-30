@@ -11,5 +11,6 @@ namespace NewsPublish.Model.Entity
         public string Url { get; set; }
         public DateTime AddTime { get; set; }
         public string Remark { get; set; }
+        public string IndDelete { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NewsPublish.Service;
 
 namespace NewsPublish.Web
 {
@@ -30,7 +31,11 @@ namespace NewsPublish.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            //注入服务,依赖注入
+            services.AddTransient<Db>();
+            services.AddTransient<BannerService>();
+            services.AddTransient<NewsService>();
+            services.AddTransient<CommentService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

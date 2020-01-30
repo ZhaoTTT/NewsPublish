@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NewsPublish.Model.Entity;
+using Microsoft.Extensions.Configuration;
 
 namespace NewsPublish.Service
 {
@@ -14,8 +15,8 @@ namespace NewsPublish.Service
         public Db() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder); //base: mother class=DbContext
-            optionsBuilder.UseSqlServer("Data Source=LAPTOP-33O7GCQ2; Initial Catalogue=NewsPublish; User Id=tongtong; Password:123456",
+            base.OnConfiguring(optionsBuilder); //base: mother class=DbContext LAPTOP-33O7GCQ2
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-33O7GCQ2;Initial Catalog=NewsPublish;User ID=sa;Password=admin", //("Database=NewsPublish, Initial Catalog=NewsPublish, Server=(local), User Id=sa, password=admin,Packet Size=512",
                 b => b.UseRowNumberForPaging());
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

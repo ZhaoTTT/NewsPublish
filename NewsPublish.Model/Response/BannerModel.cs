@@ -10,5 +10,6 @@ namespace NewsPublish.Model.Response
         public string Image { get; set; }
         public string Url { get; set; }
         public string Remark { get; set; }
+        public string IndDelete { get; set; }
     }
 }
